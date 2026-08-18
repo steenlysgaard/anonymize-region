@@ -12,6 +12,22 @@
 ;; Run `anonymize-region-restore' on returned text to put the original values
 ;; back using the mapping kept in Emacs.
 ;;
+;; This package was inspired by Anocrypt's local, regex-based text anonymizer:
+;;
+;;   https://anocrypt.com/
+;;
+;; The same site links related guidance pages that informed the general
+;; workflow motivation: anonymizing personal data before using AI tools, keeping
+;; processing local where possible, and preferring transparent regex rules for
+;; predictable replacement:
+;;
+;;   https://anocrypt.com/personal-data-ai-tools
+;;   https://anocrypt.com/ai-llm-overview
+;;   https://anocrypt.com/ai-guidelines
+;;
+;; No separate external source bibliography was visible on those pages when this
+;; package note was written.
+;;
 ;; Custom terms can be configured with `anonymize-region-custom-terms' or with
 ;; `anonymize-region-custom-file'.  The file should contain one Lisp list:
 ;;
