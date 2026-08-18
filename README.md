@@ -215,3 +215,17 @@ remove, or replace default detectors.
 The restore step depends on the placeholder mapping.  Keep the same Emacs
 session open, or save the map with `anonymize-region-save-map` before closing
 Emacs.  Load it again with `anonymize-region-load-map` before restoring text.
+
+## Testing
+
+Run the ERT test suite from the repository root:
+
+```sh
+emacs -Q --batch -L . -L test -l test/anonymize-region-test.el -f ert-run-tests-batch-and-exit
+```
+
+To byte-compile the package and tests:
+
+```sh
+emacs -Q --batch -L . -L test -f batch-byte-compile anonymize-region.el test/anonymize-region-test.el
+```

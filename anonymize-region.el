@@ -101,12 +101,13 @@ should not be anonymized."
      :regexp "\\b[A-Z][A-Z][0-9][0-9][[:space:]]?\\(?:[A-Z0-9][[:space:]]?\\)\\{11,30\\}\\b")
     (:label "Ip"
      :regexp "\\b\\(?:[0-9]\\{1,3\\}\\.\\)\\{3\\}[0-9]\\{1,3\\}\\b")
-    (:label "Phone"
-     :regexp "\\b\\(?:\\+?[0-9][0-9 .()/-]\\{6,\\}[0-9]\\)\\b")
     (:label "Date"
      :regexp "\\b\\(?:[0-3]?[0-9][./-][01]?[0-9][./-][0-9]\\{2,4\\}\\|[0-9]\\{4\\}-[01][0-9]-[0-3][0-9]\\)\\b")
+    (:label "Phone"
+     :regexp "\\b\\(?:\\+?[0-9][0-9 .()/-]\\{6,\\}[0-9]\\)\\b")
     (:label "Address"
-     :regexp "\\b[[:upper:]][[:alpha:]'’.-]+\\(?:[[:space:]]+[[:upper:][:lower:]][[:alpha:]'’.-]+\\)*[[:space:]]+\\(?:Street\\|St\\.?\\|Road\\|Rd\\.?\\|Avenue\\|Ave\\.?\\|Boulevard\\|Blvd\\.?\\|Lane\\|Ln\\.?\\|Drive\\|Dr\\.?\\|Way\\|Place\\|Pl\\.?\\|Square\\|Sq\\.?\\|Strasse\\|Straße\\|Gade\\|Vej\\)\\(?:[[:space:]]+[0-9]+[A-Za-z]?\\)?\\b"))
+     :regexp "\\b[[:upper:]][[:alpha:]'’.-]+\\(?:[[:space:]]+[[:upper:]][[:alpha:]'’.-]+\\)*[[:space:]]+\\(?:Street\\|St\\.?\\|Road\\|Rd\\.?\\|Avenue\\|Ave\\.?\\|Boulevard\\|Blvd\\.?\\|Lane\\|Ln\\.?\\|Drive\\|Dr\\.?\\|Way\\|Place\\|Pl\\.?\\|Square\\|Sq\\.?\\|Strasse\\|Straße\\|Gade\\|Vej\\)\\(?:[[:space:]]+[0-9]+[A-Za-z]?\\)?\\b"
+     :case-fold nil))
   "Built-in anonymization regex patterns.
 Each entry is a property list with :label and :regexp.  The label is used as
 the placeholder prefix."
@@ -136,11 +137,13 @@ the placeholder prefix."
 
 (defun anonymize-region--read-data-file (file)
   "Read one Lisp expression from FILE, returning nil when FILE is absent."
-  (when (file-readable-p file)
+  (when (and file (file-readable-p file))
     (with-temp-buffer
       (insert-file-contents file)
       (goto-char (point-min))
-      (read (current-buffer)))))
+      (condition-case nil
+          (read (current-buffer))
+        (end-of-file nil)))))
 
 (defun anonymize-region--custom-terms ()
   "Return configured custom terms from variables and the custom file."
