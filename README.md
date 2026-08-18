@@ -42,6 +42,20 @@ Add this to your Emacs configuration:
 (require 'anonymize-region)
 ```
 
+With `use-package`:
+
+```elisp
+(use-package anonymize-region
+  :load-path "~/.emacs.d/lisp"
+  :commands (anonymize-region
+             anonymize-region-restore
+             anonymize-region-save-map
+             anonymize-region-load-map
+             anonymize-region-clear-map)
+  :bind (("C-c a a" . anonymize-region)
+         ("C-c a r" . anonymize-region-restore)))
+```
+
 Optional key bindings:
 
 ```elisp
