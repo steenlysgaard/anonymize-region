@@ -52,8 +52,8 @@ With `use-package`:
              anonymize-region-save-map
              anonymize-region-load-map
              anonymize-region-clear-map)
-  :bind (("C-c a a" . anonymize-region)
-         ("C-c a r" . anonymize-region-restore)))
+  :bind (("C-c C-a" . anonymize-region)
+         ("C-c C-r" . anonymize-region-restore)))
 ```
 
 From GitHub with `quelpa`:
@@ -81,15 +81,15 @@ From GitHub with `quelpa-use-package`:
              anonymize-region-save-map
              anonymize-region-load-map
              anonymize-region-clear-map)
-  :bind (("C-c a a" . anonymize-region)
-         ("C-c a r" . anonymize-region-restore)))
+  :bind (("C-c C-a" . anonymize-region)
+         ("C-c C-r" . anonymize-region-restore)))
 ```
 
 Optional key bindings:
 
 ```elisp
-(global-set-key (kbd "C-c a a") #'anonymize-region)
-(global-set-key (kbd "C-c a r") #'anonymize-region-restore)
+(global-set-key (kbd "C-c C-a") #'anonymize-region)
+(global-set-key (kbd "C-c C-r") #'anonymize-region-restore)
 ```
 
 ## Basic Usage
