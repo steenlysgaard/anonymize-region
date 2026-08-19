@@ -56,6 +56,38 @@ With `use-package`:
          ("C-c a r" . anonymize-region-restore)))
 ```
 
+From GitHub with `quelpa`:
+
+```elisp
+(quelpa
+ '(anonymize-region
+   :fetcher github
+   :repo "YOUR-GITHUB-USER/anonymize-region"
+   :files ("anonymize-region.el")))
+
+(require 'anonymize-region)
+```
+
+From GitHub with `quelpa-use-package`:
+
+```elisp
+(use-package anonymize-region
+  :quelpa (anonymize-region
+           :fetcher github
+           :repo "YOUR-GITHUB-USER/anonymize-region"
+           :files ("anonymize-region.el"))
+  :commands (anonymize-region
+             anonymize-region-restore
+             anonymize-region-save-map
+             anonymize-region-load-map
+             anonymize-region-clear-map)
+  :bind (("C-c a a" . anonymize-region)
+         ("C-c a r" . anonymize-region-restore)))
+```
+
+Replace `YOUR-GITHUB-USER/anonymize-region` with the repository path after you
+publish it.
+
 Optional key bindings:
 
 ```elisp
