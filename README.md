@@ -62,7 +62,7 @@ From GitHub with `quelpa`:
 (quelpa
  '(anonymize-region
    :fetcher github
-   :repo "YOUR-GITHUB-USER/anonymize-region"
+   :repo "steenlysgaard/anonymize-region"
    :files ("anonymize-region.el")))
 
 (require 'anonymize-region)
@@ -74,7 +74,7 @@ From GitHub with `quelpa-use-package`:
 (use-package anonymize-region
   :quelpa (anonymize-region
            :fetcher github
-           :repo "YOUR-GITHUB-USER/anonymize-region"
+           :repo "steenlysgaard/anonymize-region"
            :files ("anonymize-region.el"))
   :commands (anonymize-region
              anonymize-region-restore
@@ -84,9 +84,6 @@ From GitHub with `quelpa-use-package`:
   :bind (("C-c a a" . anonymize-region)
          ("C-c a r" . anonymize-region-restore)))
 ```
-
-Replace `YOUR-GITHUB-USER/anonymize-region` with the repository path after you
-publish it.
 
 Optional key bindings:
 
